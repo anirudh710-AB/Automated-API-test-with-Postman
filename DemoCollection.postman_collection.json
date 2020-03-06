@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "50c9ef84-27b8-4baa-a941-f68a39d2cef8",
+		"name": "DemoCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Demo_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6d0f9aa7-59e4-4182-8ede-7661409a92e9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var ExpName = pm.variables.get(\"name\");",
+							"var ExpEmail = pm.variables.get(\"email\");",
+							"",
+							"pm.test(\"Verify if id -> 1 has the name as Leanne Graham\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name).to.eql(ExpName);",
+							"});",
+							"",
+							"pm.test(\"Verify if id -> 1 has the email as Sincere@april.biz\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.email).to.eql(ExpEmail);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{POSTURL}}",
+					"host": [
+						"{{POSTURL}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
